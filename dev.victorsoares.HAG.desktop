@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=HAG
+Comment=GNOME frontend for the Helix editor
+Exec=hag
+Icon=dev.victorsoares.HAG
+Terminal=false
+Type=Application
+Categories=Development;TextEditor;
+Keywords=editor;helix;code;text;
+StartupNotify=true
+StartupWMClass=dev.victorsoares.HAG

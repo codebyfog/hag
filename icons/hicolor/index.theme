@@ -1,0 +1,26 @@
+[Icon Theme]
+Name=Hicolor
+Comment=HAG symbolic icons
+Hidden=true
+Directories=scalable/actions,scalable/mimetypes,scalable/apps
+
+[scalable/actions]
+Size=16
+Type=Scalable
+MinSize=8
+MaxSize=512
+Context=Actions
+
+[scalable/mimetypes]
+Size=16
+Type=Scalable
+MinSize=8
+MaxSize=512
+Context=MimeTypes
+
+[scalable/apps]
+Size=128
+Type=Scalable
+MinSize=16
+MaxSize=512
+Context=Applications

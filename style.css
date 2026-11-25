@@ -1,0 +1,217 @@
+/* ═══════════════════════════════════════════════════════════════════════════════════
+   HAG — stylesheet
+   Usa variáveis nativas do libadwaita para respeitar o tema do sistema.
+   Sintaxe GTK4-compatible.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+
+/* ── Paned (sidebar resize) ──────────────────────────────────────────────────── */
+
+paned.horizontal {
+    background-color: transparent;
+}
+
+paned.horizontal separator {
+    background-color: transparent;
+    border: none;
+    min-width: 0px;
+    margin: 0px;
+    box-shadow: none;
+}
+
+paned.horizontal separator:backdrop {
+    background-color: transparent;
+}
+
+paned.vertical separator {
+    background-color: @borders;
+    min-height: 1px;
+    min-width: 1px;
+}
+
+
+/* ── Sidebar ─────────────────────────────────────────────────────────────── */
+
+.helix-sidebar {
+    background-color: @sidebar_bg_color;
+    border: none;
+}
+
+.helix-sidebar headerbar {
+    background-color: @sidebar_bg_color;
+    border: none;
+    box-shadow: none;
+}
+
+.content-header {
+    background-color: @window_bg_color;
+    border: none;
+    box-shadow: none;
+}
+
+.content-header {
+    border: none;
+}
+
+.content-header:backdrop {
+    border: none;
+}
+
+.editor-content-pane {
+    background-color: @window_bg_color;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+
+.welcome-view {
+    background-color: @window_bg_color;
+}
+
+.welcome-toolbar {
+    background-color: @window_bg_color;
+    border: none;
+    box-shadow: none;
+}
+
+.editor-top-bar {
+    background-color: @window_bg_color;
+    border: none;
+    box-shadow: none;
+    margin: 0px;
+    padding: 0px;
+    padding-left: 1px;
+}
+
+tabbar {
+    border-bottom: none;
+    margin: 0px;
+    padding: 0px;
+    box-shadow: none;
+    min-height: 0px;
+}
+
+
+/* ── Section header ───────────────────────────────────────────── */
+
+.helix-sidebar .section-header-icon {
+    color: @window_fg_color;
+    opacity: 1;
+}
+
+.helix-sidebar .section-header-label {
+    margin: 2px 12px;
+    font-size: 1em;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: @window_fg_color;
+}
+
+
+/* ── ListView da árvore de arquivos ─────────────────────────────────────── */
+
+.helix-sidebar .navigation-sidebar {
+    background-color: transparent;
+    padding: 2px 4px;
+}
+
+.helix-sidebar .navigation-sidebar > row,
+.helix-sidebar .navigation-sidebar > row:hover,
+.helix-sidebar .navigation-sidebar > row:selected,
+.helix-sidebar .navigation-sidebar > row:selected:hover {
+    background-color: transparent;
+    color: @window_fg_color;
+    padding: 0;
+}
+
+.helix-sidebar .section-header-label,
+.helix-sidebar .navigation-sidebar > row treeexpander {
+    border-radius: 12px;
+    padding: 2px 4px;
+    min-height: 32px;
+}
+
+.helix-sidebar .navigation-sidebar > row treeexpander {
+    transition: background-color 100ms ease;
+}
+
+.helix-sidebar .git-status {
+    min-width: 20px;
+    min-height: 18px;
+    padding: 0 3px;
+    border-radius: 9px;
+    font-weight: 600;
+    background-color: alpha(@window_fg_color, 0.09);
+}
+
+.helix-sidebar .navigation-sidebar > row:hover treeexpander,
+.helix-sidebar .navigation-sidebar > row treeexpander.context-target {
+    background-color: alpha(@window_fg_color, 0.06);
+}
+
+.helix-sidebar .navigation-sidebar > row treeexpander.active-file,
+.helix-sidebar .navigation-sidebar > row:hover treeexpander.active-file {
+    background-color: alpha(@window_fg_color, 0.12);
+}
+
+
+.file-drag-preview {
+    margin: 10px;
+    padding: 7px 12px;
+    border-radius: 12px;
+    background-color: @popover_bg_color;
+    color: @popover_fg_color;
+    font-weight: 600;
+    box-shadow: 0 0 0 1px alpha(@popover_fg_color, 0.12), 0 2px 5px rgba(0, 0, 0, 0.20);
+}
+
+.helix-sidebar treeexpander:drop(active),
+.helix-sidebar .section-header-label:drop(active) {
+    outline: 2px solid @accent_color;
+    outline-offset: -2px;
+}
+
+/* A pointer-opened menu can select its first action before the pointer enters. */
+.file-context-menu modelbutton:selected:not(:hover):not(:focus-visible) {
+    background-color: transparent;
+}
+
+/* ── Terminal VTE ────────────────────────────────────────────────────────── */
+
+vte-terminal {
+    padding: 10px 14px;
+}
+
+
+/* ── Container do editor e painel de conteúdo ──────────────────────────────── */
+
+.editor-container {
+    background-color: @headerbar_bg_color;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    box-shadow: none;
+}
+
+
+.editor-container.dark-canvas {
+    background-color: #1d1d1d;
+}
+
+.editor-container.light-canvas {
+    background-color: #ffffff;
+}
+
+/* ── Painel de terminais ─────────────────────────────────────────────────── */
+
+.terminal-panel-header {
+    border-top: 1px solid @borders;
+    background-color: @headerbar_bg_color;
+}
+
+
+/* ── Command Palette ───────────────────────────────────────────────────── */
+
+.file-search {
+    min-height: 40px;
+}
