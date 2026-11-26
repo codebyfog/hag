@@ -42,9 +42,18 @@ With a Rust toolchain managed by mise, use `mise exec -- cargo run --release --l
 
 Install `git` for file status badges and `lazygit` to open the Git interface inside HAG.
 
-### GitHub Actions builds
+### GitHub Actions builds and releases
 
-The **Build HAG** workflow builds a Linux x86_64 release on pushes, pull requests, and manual runs. Download **hag-linux-x86_64** from the run’s **Artifacts** section and extract the tarball. With the runtime libraries and Helix installed, run `./hag`. To use the bundled file icons, copy the `icons` directory into `${XDG_DATA_HOME:-$HOME/.local/share}/hag/`.
+The **Build and release HAG** workflow builds a Linux x86_64 release on pushes, pull requests, and manual runs. Download **hag-linux-x86_64** from the run’s **Artifacts** section and extract the tarball. With the runtime libraries and Helix installed, run `./hag`. To use the bundled file icons, copy the `icons` directory into `${XDG_DATA_HOME:-$HOME/.local/share}/hag/`.
+
+To publish a release, push a version tag:
+
+```sh
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+The workflow attaches `hag-linux-x86_64.tar.gz` to the GitHub release and generates the release notes from the commits since the previous tag.
 
 ## Keyboard shortcuts
 

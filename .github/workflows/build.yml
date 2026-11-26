@@ -1,6 +1,11 @@
-name: Build HAG
+name: Build and release HAG
 
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+    branches: ["**"]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -32,3 +37,31 @@ jobs:
           name: hag-linux-x86_64
           path: hag-linux-x86_64.tar.gz
           if-no-files-found: error
+
+  release:
+    name: Publish GitHub release
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - name: Download build
+        uses: actions/download-artifact@v8.0.2
+        with:
+          name: hag-linux-x86_64
+          path: dist
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" dist/hag-linux-x86_64.tar.gz --clobber
+          else
+            gh release create "$TAG" dist/hag-linux-x86_64.tar.gz \
+              --title "HAG $TAG" \
+              --generate-notes \
+              --verify-tag
+          fi
