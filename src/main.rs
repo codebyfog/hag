@@ -10,7 +10,7 @@ use gtk::{gdk, gio, glib};
 
 fn main() -> glib::ExitCode {
     glib::set_application_name("HAG");
-    let app = adw::Application::new(Some("dev.victorsoares.HAG"), gio::ApplicationFlags::empty());
+    let app = adw::Application::new(Some("io.github.codebyfog.HAG"), gio::ApplicationFlags::empty());
     app.connect_startup(|_| {
         if let Some(display) = gdk::Display::default() {
             let provider = gtk::CssProvider::new();
